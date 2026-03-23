@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light theme (default) */
+:root {
+  --background: #fafafa;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --muted-foreground: #475569;
+  --accent: #4f46e5;
+  --accent-foreground: #ffffff;
+  --accent-muted: #6366f1;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
+  --nav-bg: #fafafa;
+  --gradient-start: #4f46e5;
+  --gradient-end: #7c3aed;
+  --orb-opacity: 0.08;
+  --section-alt: #f1f5f9;
+}
+
+/* Dark theme */
+.dark {
+  --background: #0a0a0f;
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --muted-foreground: #cbd5e1;
+  --accent: #818cf8;
+  --accent-foreground: #0f172a;
+  --accent-muted: #6366f1;
+  --border: #27272a;
+  --card: #14141f;
+  --card-hover: #1e1e2e;
+  --nav-bg: #0a0a0f;
+  --gradient-start: #6366f1;
+  --gradient-end: #8b5cf6;
+  --orb-opacity: 0.12;
+  --section-alt: #0f0f18;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.2s ease;
+}
+
+::selection {
+  background: rgba(79, 70, 229, 0.25);
+  color: var(--foreground);
+}
+
+.dark ::selection {
+  background: rgba(129, 140, 248, 0.35);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Gradient orbs - theme aware */
+.gradient-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gradient-orb-1 {
+  width: 480px;
+  height: 480px;
+  background: var(--gradient-start);
+  top: -120px;
+  right: -120px;
+  opacity: var(--orb-opacity);
+}
+
+.gradient-orb-2 {
+  width: 360px;
+  height: 360px;
+  background: var(--gradient-end);
+  bottom: 15%;
+  left: -100px;
+  opacity: var(--orb-opacity);
+}
+
+.gradient-orb-3 {
+  width: 280px;
+  height: 280px;
+  background: #06b6d4;
+  bottom: 40%;
+  right: 15%;
+  opacity: calc(var(--orb-opacity) * 0.7);
+}
+
+/* Subtle grid overlay for hero */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+}
+
+.dark .hero-grid {
+  opacity: 0.15;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+}
+
+/* Section label */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Focus ring for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
