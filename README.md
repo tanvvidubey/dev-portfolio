@@ -1,80 +1,48 @@
-# Tanvi Dubey - Portfolio
+# Tanvi Dubey — Portfolio
 
-A personal portfolio site built with Next.js, featuring a full stack developer profile, project showcase, contact form, and light/dark theme.
+Personal portfolio: selected work, writing, and a short about page.
 
-**Live demo:** [https://tanvvi-dubey.vercel.app/](https://tanvvi-dubey.vercel.app/)
+**Live:** https://tanvvi-dubey.vercel.app/
 
-## Tech Stack
+## Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Theme:** Light/dark mode via `next-themes`
+Next.js 14 (App Router) · TypeScript · Tailwind · Zod · Vitest · Playwright · Resend
 
-## Features
+## Structure
 
-- **Sections:** Hero, About, Skills, Experience, Projects, Education, Contact
-- **Dual theme:** Toggle between light and dark mode (respects system preference)
-- **Contact form:** Name, email, message with API route at `/api/contact`
-- **Responsive:** Layout and navigation adapted for mobile, tablet, and desktop
-- **Accessibility:** Focus states, semantic HTML, ARIA where needed
+- **App shell:** simple nav (Work · Writing · About), optional search (⌘K), theme toggle.
+- **Content:** typed modules in `src/content/` + MD writing in `content/writing/`.
+- **APIs:** `/api/contact`.
 
-## Getting Started
+See `AUDIT.md` and `DESIGN.md` for earlier quality notes. The live site prioritizes clear product stories over engineering chrome.
 
-### Prerequisites
-
-- Node.js 18+ 
-- npm (or yarn / pnpm)
-
-### Install and run
+## Setup
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
+cp .env.example .env.local   # optional RESEND_API_KEY for contact
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for production
-
-```bash
-npm run build
-npm start
-```
-
-### Lint
-
 ```bash
 npm run lint
+npm run typecheck
+npm run test
+npm run build && npm start
+npx playwright install chromium
+npm run test:e2e
 ```
 
-## Project Structure
+## Env
 
-```
-portfolio/
-├── src/
-│   ├── app/
-│   │   ├── api/contact/    # POST handler for contact form
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   └── page.tsx       # Main single-page content
-│   └── components/
-│       ├── ContactForm.tsx
-│       ├── Nav.tsx        # Header + mobile menu + theme toggle
-│       ├── ThemeProvider.tsx
-│       └── ThemeToggle.tsx
-├── public/
-├── package.json
-└── README.md
-```
+| Variable | Required | Notes |
+|----------|----------|-------|
+| `RESEND_API_KEY` | for contact delivery | Without it, form returns 503 (no fake success) |
+| `CONTACT_FROM_EMAIL` | no | Verified Resend sender |
+| `CONTACT_TO_EMAIL` | no | Defaults to site email |
 
-## Contact Form
+## Routes
 
-The contact form submits to `POST /api/contact` with JSON body: `{ name, email, message }`. The API route validates input and returns success. To send real emails, integrate an email service (e.g. Resend, SendGrid) or Formspree in `src/app/api/contact/route.ts`.
+`/` · `/work` · `/work/[slug]` · `/writing` · `/stack` · `/about`
 
-## License
-
-Private - Tanvi Dubey © 2025
+`/projects/*` redirects to `/work/*`. `/lab/*` redirects home.
