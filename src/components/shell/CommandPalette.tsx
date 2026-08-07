@@ -85,21 +85,6 @@ export function CommandPalette({
           await navigator.clipboard.writeText(site.email);
         },
       },
-      {
-        id: "cv",
-        label: "Download CV",
-        hint: "PDF",
-        group: "Actions",
-        run: () => {
-          const a = document.createElement("a");
-          a.href = site.cvUrl;
-          a.download = site.cvFilename;
-          a.rel = "noopener";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        },
-      },
     ];
 
     return [...nav, ...projectCmds, ...actions];

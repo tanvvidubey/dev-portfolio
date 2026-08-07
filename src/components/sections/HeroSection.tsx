@@ -136,13 +136,6 @@ export function HeroSection() {
           <Link href="#contact" className="btn btn-secondary">
             Get in touch
           </Link>
-          {/* <a
-            href={site.cvUrl}
-            download={site.cvFilename}
-            className="btn btn-secondary"
-          >
-            Download CV
-          </a> */}
         </div>
 
         <ul className="reveal reveal-delay-4 mt-10 flex flex-wrap items-center gap-x-1 gap-y-2 text-sm text-[var(--muted)]">

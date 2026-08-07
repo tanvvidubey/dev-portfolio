@@ -50,13 +50,6 @@ export function SiteFooter() {
                   {item.label}
                 </Link>
               ))}
-              <a
-                href={site.cvUrl}
-                download={site.cvFilename}
-                className="text-sm text-[var(--muted)] transition hover:text-[var(--foreground)]"
-              >
-                CV
-              </a>
             </nav>
           </div>
 

@@ -4,7 +4,6 @@ import {
   IconGitHub,
   IconLinkedIn,
   IconMail,
-  IconMapPin,
 } from "@/components/icons";
 import { site } from "@/content/site";
 import { Section } from "./Section";
@@ -107,28 +106,6 @@ export function ContactSection({ className }: { className?: string }) {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div className="space-y-5">
-              <a
-                href={site.cvUrl}
-                download={site.cvFilename}
-                className="group flex items-center justify-between gap-4 rounded-2xl bg-[var(--accent)] px-5 py-3.5 text-[var(--accent-foreground)] transition hover:-translate-y-0.5 hover:bg-[var(--accent-muted)]"
-              >
-                <span>
-                  <span className="block text-sm font-semibold">
-                    Download CV
-                  </span>
-                  <span className="mt-0.5 block text-xs opacity-80">
-                    PDF · latest version
-                  </span>
-                </span>
-                <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </a>
-              {/* <p className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
-                <IconMapPin className="h-3.5 w-3.5 shrink-0 text-[var(--accent)]" />
-                Based in {site.location}
-              </p> */}
             </div>
           </aside>
         </div>

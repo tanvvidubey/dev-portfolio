@@ -11,9 +11,6 @@ export const site = {
   linkedin: "https://linkedin.com/in/tanvvidubey",
   url: "https://tanvvi-dubey.vercel.app",
   location: "Gurugram",
-  /** Public CV for download (kept in /public/cv). */
-  cvUrl: "/cv/Tanvi-Dubey-CV.pdf",
-  cvFilename: "Tanvi-Dubey-CV.pdf",
 } as const;
 
 export const impactLine =

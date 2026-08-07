@@ -4,6 +4,24 @@ Personal portfolio: selected work, writing, and a short about page.
 
 **Live:** https://tanvvi-dubey.vercel.app/
 
+## Screenshots
+
+### Home
+
+![Home](docs/screenshots/home.png)
+
+### Projects
+
+![Projects](docs/screenshots/work.png)
+
+### Project details
+
+![Project details](docs/screenshots/project-details.png)
+
+### Writing
+
+![Writing](docs/screenshots/writing.png)
+
 ## Stack
 
 Next.js 14 (App Router) · TypeScript · Tailwind · Zod · Vitest · Playwright · Resend
@@ -13,8 +31,6 @@ Next.js 14 (App Router) · TypeScript · Tailwind · Zod · Vitest · Playwright
 - **App shell:** simple nav (Work · Writing · About), optional search (⌘K), theme toggle.
 - **Content:** typed modules in `src/content/` + MD writing in `content/writing/`.
 - **APIs:** `/api/contact`.
-
-See `AUDIT.md` and `DESIGN.md` for earlier quality notes. The live site prioritizes clear product stories over engineering chrome.
 
 ## Setup
 
