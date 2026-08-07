@@ -87,7 +87,7 @@ export function ProjectsInteractive({ projects }: Props) {
                         isHot ? "translate-x-1 opacity-100" : "opacity-70"
                       }`}
                     >
-                      Read the story →
+                      Project details →
                     </p>
                   </div>
                   <ul className="flex shrink-0 flex-wrap gap-2 sm:max-w-[14rem] sm:justify-end">

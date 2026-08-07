@@ -15,7 +15,7 @@ export default function WorkPage() {
       <PageHeader
         label="Work"
         title="Selected projects"
-        description="Professional work and personal builds. Filter by type or topic, then open a case study for the decisions behind the ship."
+        description="Professional work and personal builds. Filter by type or topic, then open project details for the decisions behind the ship."
       />
       <WorkIndex projects={projects} />
     </Page>
