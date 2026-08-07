@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { IconArrowRight, IconSearch } from "@/components/icons";
-import type { Project, ProjectKind } from "@/content/projects";
+import type { Project } from "@/content/projects";
 
 function ProjectRow({
   project,
@@ -60,40 +60,27 @@ function ProjectList({ items }: { items: Project[] }) {
   );
 }
 
-type KindFilter = "all" | ProjectKind;
-
 export function WorkIndex({ projects }: { projects: Project[] }) {
-  const allTags = useMemo(() => {
-    const set = new Set<string>();
-    projects.forEach((p) => p.tags.forEach((t) => set.add(t)));
-    return Array.from(set).sort();
-  }, [projects]);
-
-  const [kind, setKind] = useState<KindFilter>("all");
-  const [tag, setTag] = useState<string>("all");
   const [q, setQ] = useState("");
 
   const filtered = useMemo(() => {
-    return projects.filter((p) => {
-      const kindOk = kind === "all" || p.kind === kind;
-      const tagOk = tag === "all" || p.tags.includes(tag);
-      const query = q.trim().toLowerCase();
-      const qOk =
-        !query ||
+    const query = q.trim().toLowerCase();
+    if (!query) return projects;
+    return projects.filter(
+      (p) =>
         p.name.toLowerCase().includes(query) ||
         p.description.toLowerCase().includes(query) ||
         (p.blurb?.toLowerCase().includes(query) ?? false) ||
-        p.tags.some((t) => t.toLowerCase().includes(query));
-      return kindOk && tagOk && qOk;
-    });
-  }, [projects, kind, tag, q]);
+        p.tags.some((t) => t.toLowerCase().includes(query))
+    );
+  }, [projects, q]);
 
   const professional = filtered.filter((p) => p.kind === "professional");
   const personal = filtered.filter((p) => p.kind === "personal");
 
   return (
     <div>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative w-full max-w-md">
           <IconSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]" />
           <label className="sr-only" htmlFor="work-search">
@@ -112,53 +99,6 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
         </p>
       </div>
 
-      <div
-        className="mt-5 flex flex-wrap gap-2"
-        role="group"
-        aria-label="Filter by type"
-      >
-        {(
-          [
-            ["all", "All"],
-            ["professional", "Professional"],
-            ["personal", "Personal"],
-          ] as const
-        ).map(([value, label]) => (
-          <button
-            key={value}
-            type="button"
-            onClick={() => setKind(value)}
-            className={`chip ${kind === value ? "chip-active" : ""}`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      <div
-        className="mt-3 flex flex-wrap gap-2"
-        role="group"
-        aria-label="Filter by topic"
-      >
-        <button
-          type="button"
-          onClick={() => setTag("all")}
-          className={`chip ${tag === "all" ? "chip-active" : ""}`}
-        >
-          All topics
-        </button>
-        {allTags.map((t) => (
-          <button
-            key={t}
-            type="button"
-            onClick={() => setTag(t)}
-            className={`chip ${tag === t ? "chip-active" : ""}`}
-          >
-            {t}
-          </button>
-        ))}
-      </div>
-
       {filtered.length === 0 ? (
         <div className="mt-12 py-10 text-center">
           <p className="text-sm text-[var(--muted-foreground)]">
@@ -167,18 +107,14 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
           <button
             type="button"
             className="mt-3 text-sm font-medium text-[var(--accent)] hover:underline"
-            onClick={() => {
-              setKind("all");
-              setTag("all");
-              setQ("");
-            }}
+            onClick={() => setQ("")}
           >
-            Clear filters
+            Clear search
           </button>
         </div>
       ) : (
         <div className="mt-12 space-y-12">
-          {professional.length > 0 && kind !== "personal" && (
+          {professional.length > 0 && (
             <section>
               <div className="flex items-end justify-between gap-4">
                 <h2 className="type-title text-xl text-[var(--foreground)] sm:text-2xl">
@@ -191,7 +127,7 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
               <ProjectList items={professional} />
             </section>
           )}
-          {personal.length > 0 && kind !== "professional" && (
+          {personal.length > 0 && (
             <section>
               <div className="flex items-end justify-between gap-4">
                 <h2 className="type-title text-xl text-[var(--foreground)] sm:text-2xl">
