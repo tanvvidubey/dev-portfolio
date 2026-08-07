@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.vercel
+.next
+node_modules
+venv
+.venv
+test-results
+playwright-report
+coverage
+AUDIT.md
+DESIGN.md
+.DS_Store
+*.tsbuildinfo
