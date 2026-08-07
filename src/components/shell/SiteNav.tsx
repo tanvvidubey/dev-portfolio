@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { IconSearch } from "@/components/icons";
+import { IconClose, IconMenu, IconSearch } from "@/components/icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { site } from "@/content/site";
 
@@ -118,11 +118,16 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
   return (
     <header
       className={`shell-enter sticky top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background-color,box-shadow] duration-200 ${
-        scrolled
-          ? "bg-[var(--nav-bg)]/92 shadow-[0_8px_30px_-20px_rgba(59,42,30,0.45)] backdrop-blur-md"
+        mobileOpen || scrolled
+          ? "bg-[var(--nav-bg)] shadow-[0_8px_30px_-20px_rgba(59,42,30,0.45)]"
           : "bg-transparent"
       }`}
-      style={{ height: "calc(var(--shell-height) + env(safe-area-inset-top))" }}
+      style={{
+        height: mobileOpen
+          ? "auto"
+          : "calc(var(--shell-height) + env(safe-area-inset-top))",
+        minHeight: "calc(var(--shell-height) + env(safe-area-inset-top))",
+      }}
     >
       <nav
         className="shell-inner flex h-[var(--shell-height)] items-center justify-between gap-3"
@@ -167,23 +172,27 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
           <button
             ref={buttonRef}
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--foreground)] transition hover:bg-[var(--card-hover)] md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full bg-[var(--card)] transition hover:bg-[var(--card-hover)] md:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls={menuId}
             onClick={() => setMobileOpen((o) => !o)}
           >
-            <span aria-hidden className="text-lg leading-none">
-              {mobileOpen ? "×" : "☰"}
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--accent)] text-[var(--accent-foreground)]">
+              {mobileOpen ? (
+                <IconClose className="block h-3.5 w-3.5" />
+              ) : (
+                <IconMenu className="block h-3.5 w-3.5" />
+              )}
             </span>
           </button>
         </div>
       </nav>
 
-      {mobileOpen && (
+      {mobileOpen ? (
         <div
           id={menuId}
-          className="absolute inset-x-0 top-full z-40 max-h-[min(70vh,28rem)] overflow-y-auto border-b border-[color-mix(in_srgb,var(--muted)_14%,transparent)] bg-[var(--background)]/98 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden"
+          className="relative z-40 border-t border-[color-mix(in_srgb,var(--muted)_16%,transparent)] bg-[var(--background)] pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
@@ -219,7 +228,7 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
             </button>
           </div>
         </div>
-      )}
+      ) : null}
     </header>
   );
 }

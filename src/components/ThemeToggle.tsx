@@ -27,14 +27,14 @@ export function ThemeToggle() {
       <button
         type="button"
         onClick={() => setTheme(isDark ? "light" : "dark")}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--card)] text-[var(--accent-foreground)] transition hover:bg-[var(--card-hover)] sm:hidden"
+        className="grid h-10 w-10 place-items-center rounded-full bg-[var(--card)] transition hover:bg-[var(--card-hover)] sm:hidden"
         aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--accent)]">
+        <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--accent)] text-[var(--accent-foreground)]">
           {isDark ? (
-            <IconMoon className="h-3.5 w-3.5" />
+            <IconMoon className="block h-3.5 w-3.5" />
           ) : (
-            <IconSun className="h-3.5 w-3.5" />
+            <IconSun className="block h-3.5 w-3.5" />
           )}
         </span>
       </button>
@@ -48,21 +48,31 @@ export function ThemeToggle() {
       >
         <span
           aria-hidden
-          className={`absolute top-1 h-7 w-7 rounded-full bg-[var(--accent)] transition-transform duration-200 ${
+          className={`absolute top-1 grid h-7 w-7 place-items-center rounded-full bg-[var(--accent)] text-[var(--accent-foreground)] transition-transform duration-200 ${
             isDark ? "translate-x-[1.85rem]" : "translate-x-0"
           }`}
-        />
-        <span className="relative z-10 flex w-full items-center justify-between px-1.5 text-[var(--muted)]">
-          <IconSun
-            className={`h-3.5 w-3.5 transition ${
-              isDark ? "opacity-50" : "text-[var(--accent-foreground)]"
-            }`}
-          />
-          <IconMoon
-            className={`h-3.5 w-3.5 transition ${
-              isDark ? "text-[var(--accent-foreground)]" : "opacity-50"
-            }`}
-          />
+        >
+          {isDark ? (
+            <IconMoon className="block h-3.5 w-3.5" />
+          ) : (
+            <IconSun className="block h-3.5 w-3.5" />
+          )}
+        </span>
+        <span className="relative z-0 flex w-full items-center justify-between px-1.5 text-[var(--muted)]">
+          <span className="grid h-7 w-7 place-items-center">
+            <IconSun
+              className={`block h-3.5 w-3.5 transition ${
+                isDark ? "opacity-50" : "opacity-0"
+              }`}
+            />
+          </span>
+          <span className="grid h-7 w-7 place-items-center">
+            <IconMoon
+              className={`block h-3.5 w-3.5 transition ${
+                isDark ? "opacity-0" : "opacity-50"
+              }`}
+            />
+          </span>
         </span>
       </button>
     </>

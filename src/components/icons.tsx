@@ -66,7 +66,12 @@ export function IconSearch({ title, ...props }: IconProps) {
 
 export function IconSun({ title, ...props }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden={title ? undefined : true} {...base} {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden={title ? undefined : true}
+      {...base}
+      {...props}
+    >
       {title ? <title>{title}</title> : null}
       <circle cx="12" cy="12" r="3.5" />
       <path d="M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6" />
@@ -76,18 +81,57 @@ export function IconSun({ title, ...props }: IconProps) {
 
 export function IconMoon({ title, ...props }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden={title ? undefined : true} {...base} {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden={title ? undefined : true}
+      {...base}
+      {...props}
+    >
       {title ? <title>{title}</title> : null}
-      <path d="M20.2 14.3A8.2 8.2 0 0 1 9.7 3.8 8.5 8.5 0 1 0 20.2 14.3Z" />
+      {/* Optically centered crescent within the 24×24 box */}
+      <path d="M12.2 3.1a8.6 8.6 0 1 0 8.7 11.4A7.1 7.1 0 0 1 12.2 3.1Z" />
     </svg>
   );
 }
 
 export function IconArrowRight({ title, ...props }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden={title ? undefined : true} {...base} {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden={title ? undefined : true}
+      {...base}
+      {...props}
+    >
       {title ? <title>{title}</title> : null}
       <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+export function IconMenu({ title, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden={title ? undefined : true}
+      {...base}
+      {...props}
+    >
+      {title ? <title>{title}</title> : null}
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
+
+export function IconClose({ title, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden={title ? undefined : true}
+      {...base}
+      {...props}
+    >
+      {title ? <title>{title}</title> : null}
+      <path d="M6 6l12 12M18 6 6 18" />
     </svg>
   );
 }
