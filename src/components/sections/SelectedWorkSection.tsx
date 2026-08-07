@@ -9,7 +9,7 @@ export function SelectedWorkSection() {
   return (
     <section
       id="projects"
-      className="section-band scroll-mt-[calc(var(--shell-height)+1.5rem)]"
+      className="section-band scroll-mt-[calc(var(--shell-height)+env(safe-area-inset-top)+1.25rem)]"
     >
       <div className="section-band-inner">
         <div className="flex flex-wrap items-end justify-between gap-4">
@@ -35,7 +35,7 @@ export function SelectedWorkSection() {
           {projects.map((project, index) => (
             <Reveal key={project.slug} as="li" delay={index * 60}>
               <Link href={`/work/${project.slug}`} className="project-row group">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline gap-3">
                       <span className="font-mono text-xs text-[var(--muted)]">
@@ -50,16 +50,13 @@ export function SelectedWorkSection() {
                     </p>
                     <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1 sm:pl-8">
                       {project.tags.slice(0, 4).map((tag) => (
-                        <li
-                          key={tag}
-                          className="text-xs text-[var(--muted)]"
-                        >
+                        <li key={tag} className="text-xs text-[var(--muted)]">
                           {tag}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <p className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-[var(--accent)] opacity-80 transition group-hover:translate-x-0.5 group-hover:opacity-100 sm:pt-1">
+                  <p className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] opacity-90 transition group-hover:translate-x-0.5 group-hover:opacity-100 sm:shrink-0 sm:pt-1">
                     Project details
                     <IconArrowRight className="h-3.5 w-3.5" />
                   </p>

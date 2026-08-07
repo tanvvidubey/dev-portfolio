@@ -69,7 +69,7 @@ export function HeroSection() {
   return (
     <header
       ref={ref}
-      className="hero-stage relative isolate min-h-[min(78vh,42rem)] overflow-visible pb-14 lg:pb-20"
+      className="hero-stage relative isolate min-h-[min(88svh,40rem)] overflow-visible pb-12 sm:min-h-[min(78vh,42rem)] sm:pb-14 lg:pb-20"
     >
       {/* Full-bleed atmosphere, tucked under the sticky header */}
       <div
@@ -84,7 +84,7 @@ export function HeroSection() {
             priority
             unoptimized
             sizes="100vw"
-            className="object-cover object-[62%_32%] dark:hidden"
+            className="object-cover object-[70%_28%] sm:object-[62%_32%] dark:hidden"
           />
           <Image
             src="/images/hero-dark.png"
@@ -93,7 +93,7 @@ export function HeroSection() {
             priority
             unoptimized
             sizes="100vw"
-            className="hidden object-cover object-[62%_32%] dark:block"
+            className="hidden object-cover object-[70%_28%] dark:block sm:object-[62%_32%]"
           />
         </div>
       </div>
@@ -108,10 +108,10 @@ export function HeroSection() {
             aria-hidden
             className="hero-name-sun pointer-events-none absolute left-[42%] top-[48%] -z-10 h-[8.5rem] w-[8.5rem] -translate-x-1/2 -translate-y-1/2 rounded-full sm:left-[38%] sm:h-[10.5rem] sm:w-[10.5rem] md:left-[36%] md:h-[12rem] md:w-[12rem] lg:h-[13.5rem] lg:w-[13.5rem]"
           />
-          <span className="type-display relative block text-[3.5rem] leading-[0.9] text-[var(--foreground)] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+          <span className="type-display relative block text-[clamp(2.6rem,12vw,3.5rem)] leading-[0.92] text-[var(--foreground)] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
             {first}
           </span>
-          <span className="type-display relative mt-1 block translate-x-0 text-[3.5rem] leading-[0.9] text-[var(--accent)] sm:mt-2 sm:translate-x-4 sm:text-6xl md:translate-x-8 md:text-7xl lg:text-[5.5rem]">
+          <span className="type-display relative mt-1 block translate-x-0 text-[clamp(2.6rem,12vw,3.5rem)] leading-[0.92] text-[var(--accent)] sm:mt-2 sm:translate-x-4 sm:text-6xl md:translate-x-8 md:text-7xl lg:text-[5.5rem]">
             {last}
           </span>
         </h1>
@@ -128,23 +128,26 @@ export function HeroSection() {
           {site.tagline}
         </p>
 
-        <div className="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-3">
-          <Link href="#projects" className="btn btn-primary">
+        <div className="reveal reveal-delay-3 mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-9 sm:max-w-none sm:flex-row sm:flex-wrap">
+          <Link href="#projects" className="btn btn-primary w-full sm:w-auto">
             View projects
             <IconArrowRight className="h-4 w-4" />
           </Link>
-          <Link href="#contact" className="btn btn-secondary">
+          <Link
+            href="#contact"
+            className="btn btn-secondary w-full bg-[var(--card)]/85 sm:w-auto"
+          >
             Get in touch
           </Link>
         </div>
 
-        <ul className="reveal reveal-delay-4 mt-10 flex flex-wrap items-center gap-x-1 gap-y-2 text-sm text-[var(--muted)]">
+        <ul className="reveal reveal-delay-4 mt-8 flex flex-wrap items-center gap-x-1 gap-y-2.5 text-sm text-[var(--muted)] sm:mt-10">
           {social.map((item, i) => {
             const Icon = item.icon;
             return (
               <li key={item.label} className="flex items-center">
                 {i > 0 ? (
-                  <span className="mx-2.5 text-[var(--border)]" aria-hidden>
+                  <span className="mx-2 text-[var(--border)] sm:mx-2.5" aria-hidden>
                     ·
                   </span>
                 ) : null}
@@ -153,7 +156,7 @@ export function HeroSection() {
                   {...(item.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="inline-flex items-center gap-1.5 transition hover:text-[var(--foreground)]"
+                  className="inline-flex min-h-10 items-center gap-1.5 py-1 transition hover:text-[var(--foreground)]"
                 >
                   <Icon className="h-3.5 w-3.5 shrink-0" />
                   {item.label}
@@ -162,10 +165,10 @@ export function HeroSection() {
             );
           })}
           <li className="flex items-center">
-            <span className="mx-2.5 text-[var(--border)]" aria-hidden>
+            <span className="mx-2 text-[var(--border)] sm:mx-2.5" aria-hidden>
               ·
             </span>
-            <span className="inline-flex items-center gap-1.5 text-[var(--muted-foreground)]">
+            <span className="inline-flex min-h-10 items-center gap-1.5 py-1 text-[var(--muted-foreground)]">
               <IconMapPin className="h-3.5 w-3.5 shrink-0" />
               {site.location}
             </span>

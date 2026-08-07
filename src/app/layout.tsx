@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Cormorant_Garamond,
   IBM_Plex_Mono,
@@ -65,6 +65,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: site.url,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f0e6" },
+    { media: "(prefers-color-scheme: dark)", color: "#131513" },
+  ],
 };
 
 const jsonLd = {

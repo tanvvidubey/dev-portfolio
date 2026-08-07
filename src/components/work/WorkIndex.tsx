@@ -14,7 +14,7 @@ function ProjectRow({
 }) {
   return (
     <Link href={`/work/${project.slug}`} className="project-row group">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span className="font-mono text-xs text-[var(--muted)]">
@@ -38,7 +38,7 @@ function ProjectRow({
             ))}
           </ul>
         </div>
-        <p className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-[var(--accent)] opacity-80 transition group-hover:translate-x-0.5 group-hover:opacity-100 sm:pt-1">
+        <p className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] opacity-90 transition group-hover:translate-x-0.5 group-hover:opacity-100 sm:shrink-0 sm:pt-1">
           Project details
           <IconArrowRight className="h-3.5 w-3.5" />
         </p>
@@ -80,8 +80,8 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative w-full max-w-md">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+        <div className="relative w-full sm:max-w-md">
           <IconSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]" />
           <label className="sr-only" htmlFor="work-search">
             Search projects
@@ -94,7 +94,7 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
             className="field w-full pl-10"
           />
         </div>
-        <p className="shrink-0 text-sm tabular-nums text-[var(--muted)]">
+        <p className="shrink-0 text-sm tabular-nums text-[var(--muted)] sm:text-right">
           {filtered.length} of {projects.length}
         </p>
       </div>

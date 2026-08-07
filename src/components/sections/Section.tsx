@@ -23,7 +23,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`section-band scroll-mt-[calc(var(--shell-height)+1.5rem)] ${
+      className={`section-band scroll-mt-[calc(var(--shell-height)+env(safe-area-inset-top)+1.25rem)] ${
         alt ? "section-band-alt" : ""
       } ${className}`}
     >

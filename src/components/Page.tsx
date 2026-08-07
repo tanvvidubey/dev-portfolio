@@ -16,7 +16,7 @@ export function Page({
 }: PageProps) {
   return (
     <Tag
-      className={`page-enter px-[var(--page-pad)] py-12 sm:py-16 ${className}`}
+      className={`page-enter overflow-x-clip px-[var(--page-pad)] py-8 sm:py-12 md:py-16 ${className}`}
     >
       <div
         className={`mx-auto w-full ${wide ? "max-w-[var(--page-wide)]" : "max-w-[var(--page-max)]"}`}

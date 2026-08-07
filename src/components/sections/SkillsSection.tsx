@@ -17,7 +17,7 @@ export function SkillsSection() {
     >
       <div className="grid gap-4 lg:grid-cols-[13rem_1fr]">
         <div
-          className="flex flex-row gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible"
+          className="flex flex-row gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-col lg:overflow-visible [&::-webkit-scrollbar]:hidden"
           role="tablist"
           aria-label="Skill groups"
         >

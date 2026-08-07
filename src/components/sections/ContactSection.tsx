@@ -80,7 +80,7 @@ export function ContactSection({ className }: { className?: string }) {
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
                 Elsewhere
               </p>
-              <ul className="mt-4 space-y-8">
+              <ul className="mt-4 space-y-3 sm:space-y-4">
                 {links.map(({ href, label, detail, icon: Icon, external }) => (
                   <li key={label}>
                     <a

@@ -117,20 +117,20 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
 
   return (
     <header
-      className={`shell-enter sticky top-0 z-50 transition-[background-color,box-shadow] duration-200 ${
+      className={`shell-enter sticky top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background-color,box-shadow] duration-200 ${
         scrolled
           ? "bg-[var(--nav-bg)]/92 shadow-[0_8px_30px_-20px_rgba(59,42,30,0.45)] backdrop-blur-md"
           : "bg-transparent"
       }`}
-      style={{ height: "var(--shell-height)" }}
+      style={{ height: "calc(var(--shell-height) + env(safe-area-inset-top))" }}
     >
       <nav
-        className="shell-inner flex h-full items-center justify-between gap-4"
+        className="shell-inner flex h-[var(--shell-height)] items-center justify-between gap-3"
         aria-label="Primary"
       >
         <Link
           href="/"
-          className="shrink-0 font-display text-[0.95rem] font-semibold tracking-tight text-[var(--foreground)] transition hover:opacity-70"
+          className="min-w-0 shrink truncate font-display text-[0.95rem] font-semibold tracking-tight text-[var(--foreground)] transition hover:opacity-70"
         >
           {site.name}
         </Link>
@@ -154,7 +154,7 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
           })}
         </div>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button
             type="button"
             onClick={onOpenPalette}
@@ -167,7 +167,7 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
           <button
             ref={buttonRef}
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--foreground)] transition hover:bg-[var(--card-hover)] md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--foreground)] transition hover:bg-[var(--card-hover)] md:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls={menuId}
@@ -183,12 +183,12 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
       {mobileOpen && (
         <div
           id={menuId}
-          className="absolute inset-x-0 top-[var(--shell-height)] z-40 bg-[var(--background)]/98 backdrop-blur-md md:hidden"
+          className="absolute inset-x-0 top-full z-40 max-h-[min(70vh,28rem)] overflow-y-auto border-b border-[color-mix(in_srgb,var(--muted)_14%,transparent)] bg-[var(--background)]/98 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
         >
-          <div className="shell-inner flex flex-col gap-1 py-4">
+          <div className="shell-inner flex flex-col gap-1 py-3">
             {links.map(({ href, label, match, section }, i) => {
               const active = isActive(match, section);
               return (
@@ -196,7 +196,7 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
                   key={href}
                   ref={i === 0 ? firstLinkRef : undefined}
                   href={href}
-                  className={`rounded-md px-3 py-3 text-base font-medium transition hover:bg-[var(--card-hover)] ${
+                  className={`rounded-md px-3 py-3.5 text-base font-medium transition hover:bg-[var(--card-hover)] ${
                     active
                       ? "bg-[var(--card)] text-[var(--foreground)]"
                       : "text-[var(--foreground)]"
@@ -209,7 +209,7 @@ export function SiteNav({ onOpenPalette }: { onOpenPalette: () => void }) {
             })}
             <button
               type="button"
-              className="rounded-md px-3 py-3 text-left text-base font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)]"
+              className="rounded-md px-3 py-3.5 text-left text-base font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)]"
               onClick={() => {
                 setMobileOpen(false);
                 onOpenPalette();

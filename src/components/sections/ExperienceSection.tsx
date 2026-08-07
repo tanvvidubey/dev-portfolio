@@ -18,7 +18,7 @@ export function ExperienceSection() {
               <div className="surface-panel relative overflow-hidden transition">
                 <button
                   type="button"
-                  className="flex w-full flex-col gap-2 p-5 text-left sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:p-7"
+                  className="flex w-full flex-col gap-3 p-5 text-left sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:p-7"
                   onClick={() => setOpen(isOpen ? -1 : index)}
                   aria-expanded={isOpen}
                 >
@@ -38,7 +38,7 @@ export function ExperienceSection() {
                       </p>
                     ) : null}
                   </div>
-                  <div className="flex shrink-0 items-center gap-3">
+                  <div className="flex shrink-0 items-center justify-between gap-3 sm:justify-end">
                     <p className="text-sm font-medium text-[var(--accent)]">
                       {job.period}
                     </p>

@@ -20,11 +20,11 @@ export function PageHeader({
         className="pointer-events-none absolute -left-6 -top-10 h-36 w-36 rounded-full bg-[var(--accent)]/10 blur-3xl"
       />
       <p className="section-label">{label}</p>
-      <h1 className="type-title mt-4 text-4xl text-[var(--foreground)] sm:text-5xl">
+      <h1 className="type-title mt-3 text-[2rem] leading-tight text-[var(--foreground)] sm:mt-4 sm:text-5xl">
         {title}
       </h1>
       {description ? (
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-[var(--muted-foreground)]">
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-[var(--muted-foreground)] sm:mt-4 sm:text-base">
           {description}
         </p>
       ) : null}

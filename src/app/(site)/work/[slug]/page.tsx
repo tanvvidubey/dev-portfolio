@@ -76,8 +76,8 @@ export default function WorkDetailPage({ params }: Props) {
         ← All projects
       </Link>
 
-      <header className="mt-8">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <header className="mt-6 sm:mt-8">
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-1">
           <p className="section-label">Project details</p>
           <span className="text-xs text-[var(--muted)]">
             {project.kind === "personal" ? "Personal" : "Professional"}
@@ -85,10 +85,10 @@ export default function WorkDetailPage({ params }: Props) {
             {statusLabel(project.status)}
           </span>
         </div>
-        <h1 className="type-title mt-4 text-4xl text-[var(--foreground)] sm:text-5xl">
+        <h1 className="type-title mt-3 text-[2rem] leading-tight text-[var(--foreground)] sm:mt-4 sm:text-5xl">
           {project.name}
         </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--muted-foreground)]">
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted-foreground)] sm:mt-5 sm:text-lg">
           {project.description}
         </p>
         {project.role ? (
@@ -169,7 +169,7 @@ export default function WorkDetailPage({ params }: Props) {
         ) : null}
       </div>
 
-      <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-medium text-[var(--foreground)]">
             Want to go deeper on this project?
@@ -178,7 +178,7 @@ export default function WorkDetailPage({ params }: Props) {
             Happy to walk through decisions and constraints.
           </p>
         </div>
-        <Link href="/#contact" className="btn btn-primary shrink-0">
+        <Link href="/#contact" className="btn btn-primary w-full sm:w-auto sm:shrink-0">
           Ask about this project
         </Link>
       </div>
@@ -186,12 +186,12 @@ export default function WorkDetailPage({ params }: Props) {
       {(prev || next) && (
         <nav
           aria-label="More projects"
-          className="mt-12 grid gap-6 border-t border-[color-mix(in_srgb,var(--muted)_18%,transparent)] pt-8 sm:grid-cols-2"
+          className="mt-10 grid gap-6 border-t border-[color-mix(in_srgb,var(--muted)_18%,transparent)] pt-8 sm:mt-12 sm:grid-cols-2"
         >
           {prev ? (
             <Link
               href={`/work/${prev.slug}`}
-              className="group flex flex-col gap-1"
+              className="group flex min-h-11 flex-col gap-1"
             >
               <span className="text-xs text-[var(--muted)]">Previous</span>
               <span className="type-title text-lg text-[var(--foreground)] transition group-hover:text-[var(--accent)]">
@@ -199,12 +199,12 @@ export default function WorkDetailPage({ params }: Props) {
               </span>
             </Link>
           ) : (
-            <div />
+            <div className="hidden sm:block" />
           )}
           {next ? (
             <Link
               href={`/work/${next.slug}`}
-              className="group flex flex-col gap-1 sm:items-end sm:text-right"
+              className="group flex min-h-11 flex-col gap-1 sm:items-end sm:text-right"
             >
               <span className="text-xs text-[var(--muted)]">Next</span>
               <span className="type-title inline-flex items-center gap-1.5 text-lg text-[var(--foreground)] transition group-hover:text-[var(--accent)]">
