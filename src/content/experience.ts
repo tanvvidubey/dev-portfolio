@@ -25,7 +25,7 @@ export const experience: Experience[] = [
   {
     company: "Oodles Technologies",
     location: "Gurugram, India",
-    role: "Sr. Associate Consultant - Development (AI)",
+    role: "Full Stack Developer (AI)",
     period: "Dec 2024 - Sep 2026",
     summary:
       "Deliver production AI platforms end to end: architecture, data modeling, frontend, backend, and deployment across marketing ops, agent orchestration, AI security, and healthcare.",
