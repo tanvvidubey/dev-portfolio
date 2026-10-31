@@ -7,7 +7,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${site.name}, full stack developer in Gurugram.`,
+  description: `About ${site.name}, full stack developer in Pune.`,
 };
 
 export default function AboutPage() {

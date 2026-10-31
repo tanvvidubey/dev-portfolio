@@ -9,10 +9,24 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    company: "Partex.AI",
+    location: "Pune, India",
+    role: "Software Engineer - Full Stack Developer",
+    period: "Oct 2026 - Present",
+    summary:
+      "Developing an AI-powered life sciences platform for Dossiers, Systematic Literature Reviews (SLR), and Literature Monitoring (LMR), supporting research and evidence synthesis workflows.",
+    highlights: [
+      "Building end-to-end product features, including responsive frontend interfaces and backend services using Angular, TypeScript, Python, FastAPI, and Node.js.",
+      "Designing REST APIs, implementing business logic, data processing workflows, and frontend-backend integrations.",
+      "Developing AI pipelines for document processing, information extraction, and research workflows, integrating AI capabilities into the product architecture.",
+      "Contributing across the technology stack to build scalable features, troubleshoot issues, and improve application functionality.",
+    ],
+  },
+  {
     company: "Oodles Technologies",
     location: "Gurugram, India",
     role: "Sr. Associate Consultant - Development (AI)",
-    period: "Dec 2024 - Present",
+    period: "Dec 2024 - Sep 2026",
     summary:
       "Deliver production AI platforms end to end: architecture, data modeling, frontend, backend, and deployment across marketing ops, agent orchestration, AI security, and healthcare.",
     highlights: [

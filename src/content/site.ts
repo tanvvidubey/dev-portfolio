@@ -5,16 +5,16 @@ export const site = {
   tagline:
     "I build scalable marketplaces, payment systems, and AI-powered products that solve real problems and create lasting impact.",
   description:
-    "Full Stack AI Developer in Gurugram with 2 years shipping production multi-tenant SaaS: React/Next.js, Python and Node backends, and LLM features spanning RAG, multi-agent workflows, and AI security testing.",
+    "Full Stack AI Developer in Pune with 2 years shipping production multi-tenant SaaS: React/Next.js, Python and Node backends, and LLM features spanning RAG, multi-agent workflows, and AI security testing.",
   email: "tanvidubey2006@gmail.com",
   github: "https://github.com/tanvvidubey",
   linkedin: "https://linkedin.com/in/tanvvidubey",
   url: "https://tanvvi-dubey.vercel.app",
-  location: "Gurugram",
+  location: "Pune",
 } as const;
 
 export const impactLine =
-  "Based in Gurugram · Associate Consultant (AI) at Oodles Technologies";
+  "Based in Pune · Software Engineer at Partex.AI";
 
 export const aboutCopy = {
   title: "Driven by impact",
