@@ -41,7 +41,7 @@ export const experience: Experience[] = [
     company: "Commudle",
     location: "Delhi, India",
     role: "Data Science & AI Intern",
-    period: "Aug 2024 - Dec 2024",
+    period: "Aug 2024 - Nov 2024",
     summary:
       "Applied data science and AI to community product workflows, from forecasting engagement to automating editorial tagging.",
     highlights: [
